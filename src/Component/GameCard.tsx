@@ -2,6 +2,7 @@ import { Button, Card, Grid, GridItem, HStack, Image } from "@chakra-ui/react";
 import Game from "../modules/Game";
 import PlatformIconList from "./PlatformIconList";
 import CriticsScore from "./CriticsScore";
+import getCroppedImageUrl from "../Services/api-media";
 
 interface props {
   game: Game;
@@ -12,7 +13,7 @@ const GameCard = ({ game }: props) => {
     <>
       <Card.Root key={game.id} maxW={"sm"} overflow={"hidden"}>
         <Image
-          src={game.background_image}
+          src={getCroppedImageUrl(game.background_image)}  //to get the cropped image using url
           alt={game.background_image_additional}
         />
         <Card.Body gap={"2"}>
