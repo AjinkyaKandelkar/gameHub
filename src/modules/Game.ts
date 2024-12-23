@@ -1,3 +1,5 @@
+import { platform } from "./Platform";
+
 interface Game{
     id: number,
     name: string,
@@ -7,5 +9,6 @@ interface Game{
     background_image_additional:string,
     rating:number,
     description:string
+    parent_platforms:{ platform :platform}[]
 }
 export default Game;
