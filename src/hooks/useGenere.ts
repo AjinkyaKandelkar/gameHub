@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import apiClient from "../Services/api-client";
-import Game from "../modules/Game";
+import { Genres } from "../modules/Genres";
+import { fetchGenres } from "../modules/FetchGenres";
 import { CanceledError } from "axios";
-import { GameResp } from "../modules/GameResp";
 
-const useGames = () => {
-  const [games, setGames] = useState<Game[]>([]);
+const useGenere = () => {
+  const [genres, setGenres] = useState<Genres[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
 
@@ -13,9 +13,9 @@ const useGames = () => {
     const controller = new AbortController();
     setLoading(true);
     apiClient
-      .get<GameResp>("/games", { signal: controller.signal })
-      .then((res) => {
-        setGames(res.data.results);
+      .get<fetchGenres>("/genres", { signal: controller.signal })
+      .then((resp) => {
+        setGenres(resp.data.results);
         setLoading(false);
       })
       .catch((err) => {
@@ -25,6 +25,6 @@ const useGames = () => {
       });
     return () => controller.abort();
   }, []);
-  return { games, error, isLoading };
+  return { genres, error, isLoading };
 };
-export default useGames;
+export default useGenere;
