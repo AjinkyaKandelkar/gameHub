@@ -9,6 +9,7 @@ interface Game{
     background_image_additional:string,
     rating:number,
     description:string
-    parent_platforms:{ platform :platform}[]
+    parent_platforms:{ platform :platform}[],
+    metacritic:number
 }
 export default Game;
