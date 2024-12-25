@@ -21,7 +21,7 @@ const GameCard = ({ game }: props) => {
           <Card.Description>
            <HStack  justifyContent={"space-between"}>
                 <PlatformIconList
-                  platforms={game.parent_platforms.map((p) => p.platform)}
+                  platforms={game.parent_platforms.map((plat) => plat.platform)}
                 ></PlatformIconList>
               
              

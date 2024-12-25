@@ -44,6 +44,7 @@ const App = () => {
 
         <GridItem area="main">
           {/* { selectedGenre && <Text> </Text> } */}
+          
           <HStack spaceX={5} paddingLeft={2} marginBottom={5}>
             <SortSlector   
               selectedSortOrder={gameQuery.sortOrder}
