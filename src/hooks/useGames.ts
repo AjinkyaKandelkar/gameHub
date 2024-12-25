@@ -1,18 +1,20 @@
+import { GameQuery } from "../App";
 import Game from "../modules/Game";
-import { Genres } from "../modules/Genres";
-import { platform } from "../modules/Platform";
+
 import useData from "./useData";
 
 const useGames = (
-  selectedGenre: Genres | null,
-  selectedPlatform: platform | null
+  gameQuery: GameQuery
 ) =>
   useData<Game>(
     "/games",
-    { params: { genres: selectedGenre?.id, platforms: selectedPlatform?.id } },
-    [
-      selectedGenre?.id,
-      selectedPlatform?.id, //dependencies array
+    { params: { 
+        genres: gameQuery.genre?.id, 
+        platforms: gameQuery.platform?.id, 
+        ordering: gameQuery.sortOrder
+    } },
+    [//dependencies array
+      gameQuery
     ]
   );
 export default useGames;
