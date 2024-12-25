@@ -1,4 +1,4 @@
-import { Grid, GridItem, Stack } from "@chakra-ui/react";
+import { Grid, GridItem, Stack, Text } from "@chakra-ui/react";
 import Navbar from "./Component/Navbar";
 import GameGrid from "./Component/GameGrid";
 import GenreGrid from "./Component/GenreGrid";
@@ -29,6 +29,7 @@ const App = () => {
         </Stack>
 
         <GridItem area="main">
+          {/* { selectedGenre && <Text> </Text> } */}
           <GameGrid selectedGenre={selectedGenre}></GameGrid>
         </GridItem>
       </Grid>
