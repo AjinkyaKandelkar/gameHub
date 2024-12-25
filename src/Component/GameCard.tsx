@@ -1,4 +1,4 @@
-import { Button, Card, Grid, GridItem, HStack, Image } from "@chakra-ui/react";
+import { Button, Card, HStack, Image } from "@chakra-ui/react";
 import Game from "../modules/Game";
 import PlatformIconList from "./PlatformIconList";
 import CriticsScore from "./CriticsScore";
