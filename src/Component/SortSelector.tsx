@@ -9,26 +9,26 @@ import {
   
   interface props {
     getSelectedSortOrder:(sortOrder: string)=>void;
-    selectedSortOrder: string | null
+    selectedSortOrder: string;
   }
   
   const SortSlector = ({getSelectedSortOrder, selectedSortOrder}:props) => {
     
     const sortOrders=[
-        {value: '', label:'Relevence'},
-        {value: '-added', label:'Date Added'},
+        {value: '', label:'Relevance'},
+        {value: '-added', label:'Date added'},
         {value: 'name', label:'Name'},
         {value: '-released', label:'Released Date'},
         {value: '-metacritic', label:'Popularity'},
         {value: '-rating', label:'Average Rating'},
-        ]
-  
+        ];
+        const CurrentSortOrder= sortOrders.find( order=> order.value === selectedSortOrder )
     return (
       <>
         <MenuRoot>
           <MenuTrigger asChild>
             <Button variant={"subtle"} size={"sm"}>
-              Order By : 
+              Order By : {CurrentSortOrder?.label || 'Relevence'}
             </Button>
           </MenuTrigger>
           <MenuContent>
@@ -38,8 +38,8 @@ import {
                 key={order.value}
                 value={order.value}
               >
-                {" "}
-                {order.label}{" "}
+                
+                {order.label}
               </MenuItem>
             ))}
           </MenuContent>
