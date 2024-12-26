@@ -9,7 +9,7 @@ interface props {
 }
 
 const GameCard = ({ game }: props) => {
-  
+  console.log(game)
   return (
     <>
       <Card.Root key={game.id} maxW={"sm"} overflow={"hidden"}>
@@ -18,18 +18,20 @@ const GameCard = ({ game }: props) => {
           alt={game.background_image_additional}
         />
         <Card.Body gap={"2"}>
-          <Card.Title> {game.name} </Card.Title>
+          
           <Card.Description>
            <HStack  justifyContent={"space-between"}>
+              {game.parent_platforms &&  
                 <PlatformIconList
                   platforms={game.parent_platforms.map((plat) => plat.platform)}
                 ></PlatformIconList>
-              
+              }
              
                 <CriticsScore score={game.metacritic}></CriticsScore>
               
             </HStack>
           </Card.Description>
+          <Card.Title> {game.name} </Card.Title>
         </Card.Body>
         <Card.Footer gap={"2"}>
           <Button variant="solid">Buy now</Button>

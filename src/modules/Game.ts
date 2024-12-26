@@ -1,4 +1,5 @@
 import { platform } from "./Platform";
+import screenshots from "./Screenshot";
 
 interface Game{
     id: number,
@@ -10,6 +11,8 @@ interface Game{
     rating:number,
     description:string
     parent_platforms:{ platform :platform}[],
-    metacritic:number
+    metacritic:number;
+    screenshots_count:number;
+    short_screenshots:screenshots[];
 }
 export default Game;

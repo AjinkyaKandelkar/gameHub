@@ -24,6 +24,7 @@ const SearchInput = ({onSearch}:props) => {
           startElement={<FaSearch />}
         >
           <Input
+            name="search"
             ref={ref}
             borderRadius={20}
             placeholder="Search Games"

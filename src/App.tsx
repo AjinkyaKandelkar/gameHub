@@ -47,7 +47,6 @@ const App = () => {
         </Stack>
 
         <GridItem area="main">
-          {/* { selectedGenre && <Text> </Text> } */}
           <Box paddingLeft={2}>
             <GameHeading gameQuery={gameQuery}></GameHeading>
             <HStack spaceX={5} marginBottom={5}>
