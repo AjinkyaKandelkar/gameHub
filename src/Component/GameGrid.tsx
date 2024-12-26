@@ -1,4 +1,4 @@
-import { SimpleGrid, Text } from "@chakra-ui/react";
+import { SimpleGrid, Span, Text } from "@chakra-ui/react";
 import GameCard from "./GameCard";
 import LoadingGameCard from "./LoadingGameCard";
 import GameCardContainer from "./GameCardContainer";
@@ -23,8 +23,8 @@ const GameGrid = ({gameQuery}:props) => {
               <LoadingGameCard ></LoadingGameCard>
             </GameCardContainer>
           ))}
+        
         {data.map((game) => (
-          
             <GameCard key={game.id} game={game}></GameCard>
           
         ))}

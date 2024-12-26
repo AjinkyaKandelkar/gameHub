@@ -1,4 +1,4 @@
-import { Button, Card, HStack, Image } from "@chakra-ui/react";
+import { Button, Card, HStack, Image, Text } from "@chakra-ui/react";
 import Game from "../modules/Game";
 import PlatformIconList from "./PlatformIconList";
 import CriticsScore from "./CriticsScore";
@@ -9,6 +9,7 @@ interface props {
 }
 
 const GameCard = ({ game }: props) => {
+  
   return (
     <>
       <Card.Root key={game.id} maxW={"sm"} overflow={"hidden"}>
