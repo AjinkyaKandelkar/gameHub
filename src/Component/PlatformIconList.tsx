@@ -5,18 +5,20 @@ import {
   FaApple,
   FaLinux,
   FaAndroid,
+  FaNeos ,
 } from "react-icons/fa";
 import { MdPhoneIphone } from "react-icons/md";
+import { SiAtari, SiSega,SiCommodore, SiD3Dotjs  } from "react-icons/si";
 import { SiNintendo } from "react-icons/si";
 import {BsGlobe} from "react-icons/bs"
 import { platform } from "../modules/Platform";
 import { HStack } from "@chakra-ui/react";
 
 interface props {
-  platforms: platform[];
+  platform: platform;
 }
 
-const PlatformIconList = ({ platforms }: props) => {
+const PlatformIconList = ({ platform }: props) => {
 
   const iconMap: {[key:string]:any} = {
     pc:< FaWindows />,
@@ -28,15 +30,18 @@ const PlatformIconList = ({ platforms }: props) => {
     web:< BsGlobe />,
     nintendo:< SiNintendo />,
     ios:< MdPhoneIphone />,
+    atari:<SiAtari/>,
+    sega:<SiSega/>,
+    d3o:<SiD3Dotjs/>,
+    neo_geo:<FaNeos/>,
+    commodore_amiga:<SiCommodore/>
   };
-  
+ 
   return (
     <>
   
         <HStack>
-         {platforms.map(platform=>
-            <div className="" key={platform.id}> {iconMap[platform.slug]} </div> 
-         )} 
+            <span key={platform.id}> {iconMap[platform.slug]} </span> 
         </HStack>
     
     </>
