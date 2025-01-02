@@ -25,7 +25,7 @@ const GenreGrid = ({ getSeletedGenre }: props) => {
           SetSelectedGenre(genre);
           getSeletedGenre(genre);
         }}
-        Genre={data}
+        Genre={data?.results}
       ></GenereList>
     </>
   );

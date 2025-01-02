@@ -3,17 +3,18 @@ import Game from "../modules/Game";
 import PlatformIconList from "./PlatformIconList";
 import CriticsScore from "./CriticsScore";
 import getCroppedImageUrl from "../Services/api-media";
+import "../Component/GameCard.css"
 
 interface props {
   game: Game;
 }
 
-const GameCard = ({ game }: props) => {
+  const GameCard = ({ game }: props) => {
   const p = game.parent_platforms.map((plat) => plat.platform);
 
   return (
     <>
-      <Card.Root key={game.id} maxW={"sm"} overflow={"hidden"}>
+      <Card.Root className="hm" key={game.id} maxW={"sm"} overflow={"hidden"} onClick={()=>console.log(game) } >
         <Image
           src={getCroppedImageUrl(game.background_image)} //to get the cropped image using url
           alt={game.background_image_additional}
@@ -22,17 +23,16 @@ const GameCard = ({ game }: props) => {
           <Card.Description>
             <HStack justifyContent={"space-between"}>
               <HStack>
-
-              {game.parent_platforms &&
-                p.map((platform) => (
-                  <PlatformIconList platform={platform}></PlatformIconList>
-                ))}
+                {game.parent_platforms &&
+                  p.map((platform) => (
+                    <PlatformIconList platform={platform} key={platform.id}></PlatformIconList>
+                  ))}
               </HStack>
 
               <CriticsScore score={game.metacritic}></CriticsScore>
             </HStack>
           </Card.Description>
-          <Card.Title> {game.name} </Card.Title>
+          <Card.Title > {game.name} </Card.Title>
         </Card.Body>
         <Card.Footer gap={"2"}>
           <Button variant="solid">Buy now</Button>

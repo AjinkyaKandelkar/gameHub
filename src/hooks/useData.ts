@@ -4,6 +4,8 @@ import { AxiosRequestConfig, CanceledError } from "axios";
 
 interface fetchResponceData<T> {
   count: number;
+  next:string;
+  previous:string;
   results: T[];
 }
 
@@ -12,9 +14,11 @@ const useData = <T>(
   requestConfig?: AxiosRequestConfig,
   depes?: any[]
 ) => {
-  const [data, setData] = useState<T[]>([]);
+ 
+  const [data, setData] = useState<fetchResponceData<T>>();
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
+  
 
   useEffect(
     () => {
@@ -27,7 +31,8 @@ const useData = <T>(
           ...requestConfig,
         })
         .then((resp) => {
-          setData(resp.data.results);
+          setData(resp.data);
+          
           setLoading(false);
         })
         .catch((err) => {

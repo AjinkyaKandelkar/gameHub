@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem, HStack, Stack, Text } from "@chakra-ui/react";
+import { Box, Grid, GridItem, HStack, Stack } from "@chakra-ui/react";
 import Navbar from "./Component/Navbar";
 import GameGrid from "./Component/GameGrid";
 import GenreGrid from "./Component/GenreGrid";
@@ -14,11 +14,12 @@ export interface GameQuery {
   platform: platform | null;
   sortOrder: string;
   searchText: string;
+  pagenumber:number;
 }
 
 const App = () => {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-
+  
   return (
     <>
       <Grid
@@ -48,7 +49,7 @@ const App = () => {
 
         <GridItem area="main">
           <Box paddingLeft={2}>
-            <GameHeading gameQuery={gameQuery}></GameHeading>
+            <GameHeading gameQuery={gameQuery} onSelectCrum={(platform)=> setGameQuery({...gameQuery, platform:null}) }></GameHeading>
             <HStack spaceX={5} marginBottom={5}>
               <SortSlector
                 selectedSortOrder={gameQuery.sortOrder}
@@ -64,7 +65,7 @@ const App = () => {
               ></PlatformSlector>
             </HStack>
           </Box>
-          <GameGrid gameQuery={gameQuery}></GameGrid>
+          <GameGrid gameQuery={gameQuery} selectedPage={( pagenumber )=> setGameQuery({...gameQuery, pagenumber})}></GameGrid>
         </GridItem>
       </Grid>
     </>

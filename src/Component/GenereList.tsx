@@ -10,7 +10,7 @@ import getCroppedImageUrl from "../Services/api-media";
 import { Genres } from "../modules/Genres";
 
 interface Props {
-  Genre: Genres[];
+  Genre: Genres[] | undefined;
   onSelectGenre: (genre: Genres) => void;
   selectedGenre: Genres | null;
 }
@@ -20,7 +20,7 @@ const GenereList = ({ Genre, onSelectGenre, selectedGenre }: Props) => {
     <>
     <Heading size={"2xl"}> Genres </Heading>
       <List.Root listStyle="none">
-        {Genre.map((genre) => (
+        {Genre?.map((genre) => (
           <ListItem key={genre.id} paddingY={2}>
             <HStack>
               <Image

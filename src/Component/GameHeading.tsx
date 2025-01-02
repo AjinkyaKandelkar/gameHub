@@ -1,20 +1,26 @@
 
-import { Heading} from "@chakra-ui/react";
 import { GameQuery } from "../App";
+import { BreadcrumbLink, BreadcrumbRoot } from "../components/ui/breadcrumb";
 
 interface props{
-    gameQuery: GameQuery
+    gameQuery: GameQuery | null;
+    onSelectCrum:(gameQ: any )=>void;
 }
-const GameHeading=({gameQuery}:props)=>{
+const GameHeading=({gameQuery, onSelectCrum}:props)=>{
     
-    const heading = `${gameQuery.platform?.name || ''}  ${gameQuery.genre?.name || ''} Games`
+    // const heading = `${gameQuery.platform?.name || ''}  ${gameQuery.genre?.name || ''} Games`
     return<>
-        <Heading size={'4xl'} marginY={4}>
+    <BreadcrumbRoot size={"lg"} marginY={4}>
+        <BreadcrumbLink onClick={()=> onSelectCrum(()=>{ gameQuery? null:null }) }> Games </BreadcrumbLink>
+        { gameQuery?.platform && <BreadcrumbLink > {gameQuery?.platform?.name} </BreadcrumbLink>}
+        { gameQuery?.genre && <BreadcrumbLink> {gameQuery?.genre?.name} </BreadcrumbLink>}
+    </BreadcrumbRoot>
+        {/* <Heading size={'4xl'} marginY={4}>
             
 
              {heading}  
             
-        </Heading>
+        </Heading> */}
     </>
 }
 export default GameHeading;

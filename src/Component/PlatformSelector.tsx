@@ -12,14 +12,14 @@ import PlatformIconList from "./PlatformIconList";
 
 
 interface props {
-  getSelectedPlatform: (platform: platform) => void;
+  getSelectedPlatform: (platform: platform |null) => void;
   selectedPlatform: platform | null;
 }
 
 const PlatformSlector = ({ getSelectedPlatform, selectedPlatform }: props) => {
   const { data, error } = usePlatforms();
+
   if (error) return null;
-  
   
   return (
     <>
@@ -30,14 +30,16 @@ const PlatformSlector = ({ getSelectedPlatform, selectedPlatform }: props) => {
           </Button>
         </MenuTrigger>
         <MenuContent>
-          <MenuItem
+          { selectedPlatform && <MenuItem
             value="clear"
             color={"fg.error"}
             _hover={{ bg: "bg.error", color: "fg.error" }}
+            onClick={()=>getSelectedPlatform(null)}
           >
             Clear
-          </MenuItem>
-          {data.map((platform) => (
+            
+          </MenuItem>}
+          {data?.results.map((platform) => (
             <MenuItem
               onClick={() => getSelectedPlatform(platform)}
               key={platform.id}

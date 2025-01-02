@@ -13,6 +13,7 @@ const useGames = (
         platforms: gameQuery.platform?.id, 
         ordering: gameQuery.sortOrder,
         search:gameQuery.searchText,
+        page:gameQuery.pagenumber,
     } },
     [//dependencies array
       gameQuery
